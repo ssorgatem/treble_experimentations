@@ -82,7 +82,7 @@ run_script '
 
 run_script 'curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash ; apt install git-lfs; git lfs install'
 
-run_script 'git clone https://github.com/phhusson/treble_experimentations'
+run_script 'git clone https://github.com/TrebleDroid/treble_experimentations'
 
 run_script 'echo >> /etc/hosts ; echo 84.38.177.154 git.rip >> /etc/hosts'
 
