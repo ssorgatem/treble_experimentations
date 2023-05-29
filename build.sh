@@ -11,17 +11,16 @@ fi
 export LC_ALL=C
 
 manifest_url="https://android.googlesource.com/platform/manifest"
-aosp="android-13.0.0_r41"
+aosp="android-13.0.0_r49"
 phh="android-13.0"
 
 build_target="$1"
-manifest_url="https://android.googlesource.com/platform/manifest"
 
 repo init -u "$manifest_url" -b $aosp --depth=1
 if [ -d .repo/local_manifests ] ;then
 	( cd .repo/local_manifests; git fetch; git reset --hard; git checkout origin/$phh)
 else
-	git clone https://github.com/JonnyVR1/treble_manifest .repo/local_manifests -b $phh
+	git clone https://github.com/TrebleDroid/treble_manifest .repo/local_manifests -b $phh
 fi
 repo sync -c -j8 --force-sync || repo sync -c -j8 --force-sync
 
