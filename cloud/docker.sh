@@ -89,7 +89,7 @@ run_script 'echo >> /etc/hosts ; echo 84.38.177.154 git.rip >> /etc/hosts'
 run_script '\
 	mkdir -p build-dir && \
 	sed -E -i "s/(repo sync.*)-j 1/\1-j16/g" treble_experimentations/build.sh && \
-    sed -E -i "s/(make.*)-j8/\1-j48/g" treble_experimentations/build.sh
+    sed -E -i "s/(make.*)-j8/\1-j24/g" treble_experimentations/build.sh
 	'
 
 run_script "cd build-dir && bash ../treble_experimentations/build.sh $android_version"
