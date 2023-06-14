@@ -14,7 +14,7 @@
 # if $REPO_REMOTE is not (yet) set (i.e. which is done by repo forall) then start the repo forall
 if [ -z "$REPO_REMOTE" ];then
 	rm -Rf patches patches.zip
-	TOP=$PWD repo forall -c "bash $(readlink -f -- $0)"
+	TOP=$PWD repo forall -j1 -c "bash $(readlink -f -- $0)"
 	zip -r patches.zip patches
 	rm -Rf patches
 	exit $?
@@ -33,7 +33,7 @@ git fetch --unshallow td $REPO_RREV
 # if repo comes from td, then get all the changes done against the "official" aosp source
 compact_remote="$(git remote get-url td|cut -d / -f 5)"
 original_remote=https://android.googlesource.com/"$(tr _ /  <<<$compact_remote)"
-if git fetch --tags $original_remote;then
+if git fetch --tags $original_remote || git fetch --tags $original_remote || git fetch --tags $original_remote || git fetch --tags $original_remote;then
 	echo $REPO_PROJECT
 	lastTag="$(git describe --abbrev=0 --match=android-*)"
 	patches_out=$TOP/patches/$compact_remote/
